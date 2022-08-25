@@ -7,23 +7,28 @@
     <link rel="stylesheet" href="./style/style.css">
     <title>Listas</title>
 </head>
+
 <body>
+    <div id="spinner" class="lds-spinner spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    
     <header class="header">
         <figure id="box-title">
             <img id="title" src="./assets/title.png">
         </figure>
-        <p id="list-title">Encabezado</p>
+        <p id="title-list">Encabezado</p>
     </header>
+
     <main class="box-lists">
+        <img src="https://placekitten.com/2200/1000">
         <article class="box-list">
-            <h3 class="list-title">Caja 1</h3>
+            <h3 id="list-title">Caja 1</h3>
             <hr/>
-            <ul>
-                <li>Oldest</li>
-                <li>Newest</li>
-                <li>Updated</li>
+            <ul id="list">
+                <li id="oldest">Oldest</li>
+                <li id="newest">Newest</li>
+                <li id="updated">Updated</li>
             </ul>
-            <button>READ MORE!</button>
+            <button id="read-btn">READ MORE!</button>
 
         </article>
     </main>
