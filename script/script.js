@@ -41,7 +41,7 @@ window.addEventListener("load", function() {
         let mainBox = document.createElement("main");
             mainBox.style.display = "flex";
             mainBox.style.flexFlow = "row wrap";
-            mainBox.style.justifyContent = "left";
+            mainBox.style.justifyContent = "center";
             mainBox.style.alignItems = "flex-start";
 
         let main2Box = document.createElement("main");
@@ -91,7 +91,7 @@ window.addEventListener("load", function() {
             let titleItm = document.createElement("p");
                 titleItm.innerHTML = displayName;
                 titleItm.style.fontSize = "1.2rem";
-                titleItm.style.color = "rgb(80, 80, 80)";
+                titleItm.style.color = "rgb(85, 85, 85)";
                 titleItm.style.marginTop = "5px";
 
             let bar = document.createElement("hr");
@@ -101,21 +101,21 @@ window.addEventListener("load", function() {
             let oldItm = document.createElement("p");
                 oldItm.innerHTML = "Oldest: "+oldest;
                 oldItm.style.fontSize = "0.7rem";
-                oldItm.style.color = "rgb(120, 120, 120)";
+                oldItm.style.color = "rgb(110, 110, 110)";
                 oldItm.style.margin = "0";
                 oldItm.style.marginBottom = "7px";
 
             let newItm = document.createElement("p");
                 newItm.innerHTML = "Newest: "+newest;
                 newItm.style.fontSize = "0.7rem";
-                newItm.style.color = "rgb(120, 120, 120)";
+                newItm.style.color = "rgb(110, 110, 110)";
                 newItm.style.margin = "0";
                 newItm.style.marginBottom = "7px";
 
             let updItm = document.createElement("p");
                 updItm.innerHTML = "Updated: "+updated;
                 updItm.style.fontSize = "0.6rem";
-                updItm.style.color = "rgb(120, 120, 120)";
+                updItm.style.color = "rgb(110, 110, 110)";
                 updItm.style.margin = "0";
                 updItm.style.marginBottom = "15px";
 
@@ -127,7 +127,7 @@ window.addEventListener("load", function() {
                 btn.style.border = "1px solid rgb(231, 231, 231)";
                 btn.style.boxShadow = "1px 1px 2px 0px rgb(200, 200, 200)";
                 btn.style.borderRadius = "3px";
-                btn.style.padding = "10px";
+                btn.style.padding = "8px 15px 8px 15px";
                 btn.style.cursor = "pointer";
 
                 btn.addEventListener("click", function() {
@@ -140,7 +140,7 @@ window.addEventListener("load", function() {
                             mainBox.style.display = "none";
                             main2Box.style.display = "flex";
                             main2Box.style.flexFlow = "row wrap";
-                            main2Box.style.justifyContent = "left";
+                            main2Box.style.justifyContent = "center";
                             main2Box.style.alignItems = "flex-start";
                             
                             for (j = 0; j < data2.results.books.length; j++) {
@@ -153,18 +153,31 @@ window.addEventListener("load", function() {
                                 let bookBuy = data2.results.books[j].buy_links[0].url;
 
                                 let item2 = document.createElement("article");
-                                    item.style.width = "225px";
-                                    item.style.height = "auto";
-                                    item.style.margin = "8px";
-                                    item.style.border = "1px solid rgb(231, 231, 231)";
-                                    item.style.boxShadow = "1px 1px 2px 0px rgb(200, 200, 200)";
-                                    item.style.paddingTop = "17px";
-                                    item.style.paddingLeft = "13px";
-                                    item.style.paddingRight = "13px";
-                                    item.style.paddingBottom = "13px";
+                                    item2.style.width = "225px";
+                                    item2.style.height = "auto";
+                                    item2.style.margin = "8px";
+                                    item2.style.border = "1px solid rgb(231, 231, 231)";
+                                    item2.style.boxShadow = "1px 1px 2px 0px rgb(200, 200, 200)";
+                                    item2.style.paddingTop = "17px";
+                                    item2.style.paddingLeft = "13px";
+                                    item2.style.paddingRight = "13px";
+                                    item2.style.paddingBottom = "13px";
+
+                                let rankItm2 = document.createElement("span");
+                                    rankItm2.innerHTML = "#"+bookRank+" ";
+                                    rankItm2.style.fontWeight = "bold";
+                                    rankItm2.style.fontSize = "0.7rem";
+                                    rankItm2.style.color = "rgb(110, 110, 110)";
+
+                                let titleItm2 = document.createElement("span");
+                                    titleItm2.innerHTML = bookTitle;
+                                    titleItm2.style.fontWeight = "bold";
+                                    titleItm2.style.fontSize = "0.7rem";
+                                    titleItm2.style.color = "rgb(110, 110, 110)";
 
                                 let boxBookImg = document.createElement("figure");
-                                    boxBookImg.style.marginLeft = "8px";
+                                    boxBookImg.style.margin = "8px";
+                                    boxBookImg.style.marginTop = "25px";
 
                                 let bookImg = document.createElement("img");
                                     bookImg.src = bookCover;
@@ -172,9 +185,40 @@ window.addEventListener("load", function() {
                                     bookImg.style.width = "100%";
                                     bookImg.style.objectFit = "contain";
 
+                                let weeksItm2 = document.createElement("p");
+                                    weeksItm2.innerHTML = "Weeks on list: "+bookWeeks;
+                                    weeksItm2.style.fontStyle = "italic";
+                                    weeksItm2.style.fontSize = "0.7rem"
+                                    weeksItm2.style.color = "rgb(110, 110, 110)";
+                                    weeksItm2.style.marginTop = "20px";
+                                    weeksItm2.style.marginBottom = "15px";
+
+                                let descItm2 = document.createElement("p");
+                                    descItm2.innerHTML = bookDesc;
+                                    descItm2.style.fontSize = "0.7rem"
+                                    descItm2.style.color = "rgb(110, 110, 110)";
+                                    descItm2.style.lineHeight = "200%";
+
+                                let buyItm2 = document.createElement("button");
+                                    buyItm2.innerHTML = "BUY AT AMAZON ◄►";
+                                    buyItm2.style.color = "white";
+                                    buyItm2.style.backgroundColor = "#FF9900";
+                                    buyItm2.style.fontSize = "0.7rem";
+                                    buyItm2.style.border = "1px solid rgb(255, 153, 0)";
+                                    buyItm2.style.boxShadow = "1px 1px 2px 0px rgb(200, 200, 200)";
+                                    buyItm2.style.borderRadius = "3px";
+                                    buyItm2.style.padding = "8px 15px 8px 15px";
+                                    buyItm2.style.cursor = "pointer";
+
                                 main2Box.appendChild(item2);
+                                item2.appendChild(rankItm2);
+                                item2.appendChild(titleItm2);
                                 item2.appendChild(boxBookImg);
                                 boxBookImg.appendChild(bookImg);
+                                item2.appendChild(weeksItm2);
+                                item2.appendChild(descItm2);
+                                item2.appendChild(buyItm2);
+                                
                             }
                         })
                     })
