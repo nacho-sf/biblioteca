@@ -6,11 +6,6 @@
 
 
 
-        
-
-
-
-
 
 
 
@@ -27,6 +22,7 @@ window.addEventListener("load", function() {
 
         let boxImg = document.createElement("figure");
             boxImg.style.marginLeft = "8px";
+            boxImg.style.marginBottom = "4px";
 
 
         let titleImg = document.createElement("img");
@@ -37,16 +33,29 @@ window.addEventListener("load", function() {
 
         let titleList = document.createElement("h3");
             titleList.style.display = "none";
+            titleList.style.marginBottom = "20px";
+
+        let bar2 = document.createElement("hr");
+            bar2.style.marginLeft = "8px";
+            bar2.style.marginRight = "40px";
+            bar2.style.borderTop = "0";
+            bar2.style.borderBottom = "1px solid #eee";
+            bar2.style.marginBottom = "18px";
+            bar2.style.marginTop = "18px";
+
+        let backBtn = document.createElement("button");
+            backBtn.style.display = "none";
 
         let mainBox = document.createElement("main");
             mainBox.style.display = "flex";
             mainBox.style.flexFlow = "row wrap";
-            mainBox.style.justifyContent = "center";
+            mainBox.style.justifyContent = "left";
             mainBox.style.alignItems = "flex-start";
 
         let main2Box = document.createElement("main");
             main2Box.style.flex = "none";
-            
+            main2Box.style.marginTop = "8px";
+
         let footBox = document.createElement("footer");
             footBox.style.display = "block";
             footBox.style.margin = "8px";
@@ -64,6 +73,9 @@ window.addEventListener("load", function() {
         headBox.appendChild(titleList);
         headBox.appendChild(boxImg);   
         boxImg.appendChild(titleImg);
+        headBox.appendChild(titleList);
+        headBox.appendChild(bar2);
+        headBox.appendChild(backBtn);
         document.body.appendChild(mainBox);
         document.body.appendChild(main2Box);
         document.body.appendChild(footBox);
@@ -98,6 +110,7 @@ window.addEventListener("load", function() {
                 bar.style.borderTop = "0";
                 bar.style.borderBottom = "1px solid #eee";
                 bar.style.marginBottom = "22px";
+
             let oldItm = document.createElement("p");
                 oldItm.innerHTML = "Oldest: "+oldest;
                 oldItm.style.fontSize = "0.7rem";
@@ -132,15 +145,40 @@ window.addEventListener("load", function() {
 
                 btn.addEventListener("click", function() {
 
+                        window.scrollTo(0,0);
+
                         const listLink = `https://api.nytimes.com/svc/books/v3/lists/current/${linkName}.json?api-key=pGTysXfbyMzk5IpwygA7yvcbUnb6QAbT`;
                     
                         fetch(listLink)
                           .then(response2 => response2.json())
                           .then(data2 => {
                             mainBox.style.display = "none";
+
+                            titleList.style.display = "block";
+                            titleList.innerHTML = displayName;
+                            titleList.style.marginLeft = "8px";
+                            titleList.style.marginTop = "4px";
+                            titleList.style.fontSize = "1.6rem";
+                            titleList.style.fontWeight = "500";
+                            titleList.style.color = "rgb(80, 80, 80)";
+
+                            backBtn.style.display = "block";
+                            backBtn.innerHTML = "◄ BACK TO INDEX";
+                            backBtn.style.color = "white";
+                            backBtn.style.backgroundColor = "red";
+                            backBtn.style.fontSize = "0.7rem";
+                            backBtn.style.border = "1px solid rgb(255, 153, 0)";
+                            backBtn.style.boxShadow = "1px 1px 2px 0px rgb(200, 200, 200)";
+                            backBtn.style.borderRadius = "3px";
+                            backBtn.style.padding = "8px 15px 8px 15px";
+                            backBtn.style.cursor = "pointer";
+                            backBtn.addEventListener("click", function() {
+                                window.location.reload();
+                                });
+
                             main2Box.style.display = "flex";
                             main2Box.style.flexFlow = "row wrap";
-                            main2Box.style.justifyContent = "center";
+                            main2Box.style.justifyContent = "left";
                             main2Box.style.alignItems = "flex-start";
                             
                             for (j = 0; j < data2.results.books.length; j++) {
@@ -200,7 +238,7 @@ window.addEventListener("load", function() {
                                     descItm2.style.lineHeight = "200%";
 
                                 let buyItm2 = document.createElement("button");
-                                    buyItm2.innerHTML = "BUY AT AMAZON ◄►";
+                                    buyItm2.innerHTML = "BUY AT AMAZON ►";
                                     buyItm2.style.color = "white";
                                     buyItm2.style.backgroundColor = "#FF9900";
                                     buyItm2.style.fontSize = "0.7rem";
@@ -209,6 +247,12 @@ window.addEventListener("load", function() {
                                     buyItm2.style.borderRadius = "3px";
                                     buyItm2.style.padding = "8px 15px 8px 15px";
                                     buyItm2.style.cursor = "pointer";
+
+                                    buyItm2.addEventListener("click", function() {
+                                        window.open(bookBuy);
+                                    });
+
+
 
                                 main2Box.appendChild(item2);
                                 item2.appendChild(rankItm2);
@@ -225,9 +269,6 @@ window.addEventListener("load", function() {
 
 
 
-
-
-
             mainBox.appendChild(item);
             item.appendChild(titleItm);
             item.appendChild(bar);
@@ -237,46 +278,8 @@ window.addEventListener("load", function() {
             item.appendChild(btn);
 
         };
-/*
-        let paragraph = document.createElement("p");
-            paragraph.style.color = "green";
-            paragraph.style.fontSize = "1.2em";
-            document.body.appendChild(paragraph);
-            paragraph.innerText = `
-            Nombre de usuario: ${data.login}
-  
-            Número de repositorios: ${data.public_repos}
-            `;
-            let avatarGit = document.createElement("img");
-            avatarGit.style.borderRadius = "40px";
-            document.body.appendChild(avatarGit);
-            avatarGit.src = data.avatar_url;  
-            */
+
             document.getElementById("spinner").classList.toggle("spinner2");
         })
       .catch(error => console.log(error));
     });
-
-
-
-
-
-    /*
-fetch("https://fakestoreapi.com/products")
-    .then(response=>response.json())
-    .then(elementCard=>{
-        let paragraph = document.createElement("p");
-            document.body.appendChild(paragraph);
-            paragraph.innerText = `
-            Título: ${elementCard.title}
-            
-            Descripción: ${elementCard.description}
-
-            Precio: ${elementCard.price}
-
-        `;
-        let photo = document.createElement("img");
-            document.body.appendChild(photo);
-            photo.src = elementCard.image;
-    })
-*/
