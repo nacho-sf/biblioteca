@@ -1,12 +1,7 @@
-// Link listas:
-// https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=pGTysXfbyMzk5IpwygA7yvcbUnb6QAbT
-
-// Link Libros en lista:
-//https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=pGTysXfbyMzk5IpwygA7yvcbUnb6QAbT
-
-
-
-
+// Hacer la FASE 2
+// Implementar el spinner también el la sección de libros
+// Centrar el spinner en el mainBox
+// Ocultar el API KEY
 
 
 window.addEventListener("load", function() {
@@ -67,7 +62,7 @@ window.addEventListener("load", function() {
             nytImg.style.cursor = "pointer";
             nytImg.addEventListener("click", function() {
                 window.location.href = "https://developer.nytimes.com/";
-            })
+            });
 
         document.body.appendChild(headBox);
         headBox.appendChild(titleList);
@@ -142,9 +137,7 @@ window.addEventListener("load", function() {
                 btn.style.borderRadius = "3px";
                 btn.style.padding = "8px 15px 8px 15px";
                 btn.style.cursor = "pointer";
-
                 btn.addEventListener("click", function() {
-
                         window.scrollTo(0,0);
 
                         const listLink = `https://api.nytimes.com/svc/books/v3/lists/current/${linkName}.json?api-key=pGTysXfbyMzk5IpwygA7yvcbUnb6QAbT`;
@@ -252,8 +245,6 @@ window.addEventListener("load", function() {
                                         window.open(bookBuy);
                                     });
 
-
-
                                 main2Box.appendChild(item2);
                                 item2.appendChild(rankItm2);
                                 item2.appendChild(titleItm2);
@@ -267,8 +258,6 @@ window.addEventListener("load", function() {
                         })
                     })
 
-
-
             mainBox.appendChild(item);
             item.appendChild(titleItm);
             item.appendChild(bar);
@@ -276,7 +265,6 @@ window.addEventListener("load", function() {
             item.appendChild(newItm);
             item.appendChild(updItm);
             item.appendChild(btn);
-
         };
 
             document.getElementById("spinner").classList.toggle("spinner2");
